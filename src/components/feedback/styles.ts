@@ -1,4 +1,5 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled"
+import Button from "components/Button/Button"
 
 export const FeedbackWrapper = styled.div`
   display: flex;
@@ -8,12 +9,12 @@ export const FeedbackWrapper = styled.div`
   align-items: center;
   min-width: 500px;
   height: 70px;
-`;
+`
 export const FeedbackContainer = styled.div`
   display: flex;
   width: 100%;
   gap: 10px;
-`;
+`
 
 export const Counter = styled.div`
   display: flex;
@@ -25,17 +26,8 @@ export const Counter = styled.div`
   color: blue;
   width: 50%;
   height: 100%;
-`;
+`
 
 export const ButtonWrapper = styled.div`
   width: 100%;
-`;
-
-// #reset-button {
-//   background-color: grey;
-//   cursor: pointer;
-// }
-
-// #reset-button:hover {
-//   background-color: rgb(93, 92, 92);
-// }
+`

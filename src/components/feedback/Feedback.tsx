@@ -1,34 +1,37 @@
-import { useState } from "react";
 import Button from "../Button/Button";
 import likeIcon from "../../assets/like-icon.svg";
 import dislikeIcon from "../../assets/dislike-icon.svg";
 import { FeedbackWrapper, FeedbackContainer, Counter, ButtonWrapper } from "./styles";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { feedbackActions, feedbackSelectors } from "store/redux/feedback/feedbackSlice";
 
 function Feedback() {
-  const [countLikes, setLikes] = useState<number>(0);
-  const [countDislikes, setDislikes] = useState<number>(0);
+  const like = useAppSelector(feedbackSelectors.countLikes);
+  const dislike = useAppSelector(feedbackSelectors.countDislikes);
 
-  const incrLikes = (): void => {
-    setLikes((state) => state + 1);
-  };
-  const incrDislikes = (): void => {
-    setDislikes((state) => state + 1);
+  const dispatch = useAppDispatch();
+
+  const onLike = () => {
+    dispatch(feedbackActions.like());
   };
 
-  const reset = (): void => {
-    setLikes(0);
-    setDislikes(0);
+  const onDislike = () => {
+    dispatch(feedbackActions.dislikes());
+  };
+
+  const reset = () => {
+    dispatch(feedbackActions.reset());
   };
 
   return (
     <FeedbackWrapper>
       <FeedbackContainer>
-        <Counter>{countLikes}</Counter>
+        <Counter>{like}</Counter>
         <ButtonWrapper>
           <Button
             type='button'
             name="Like"
-            onClick={incrLikes}
+            onClick={onLike}
             imgSrc={likeIcon}
             altImg="Like Icon"
           />
@@ -37,12 +40,12 @@ function Feedback() {
           <Button
             type='button'
             name="Dislike"
-            onClick={incrDislikes}
+            onClick={onDislike}
             imgSrc={dislikeIcon}
             altImg="Dislike Icon"
           />
         </ButtonWrapper>
-        <Counter>{countDislikes}</Counter>
+        <Counter>{dislike}</Counter>
       </FeedbackContainer>
       <ButtonWrapper>
         <Button type='button' id="reset-button" name="RESET" onClick={reset} />
