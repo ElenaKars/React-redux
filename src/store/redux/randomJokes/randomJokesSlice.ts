@@ -2,7 +2,6 @@ import { create } from "domain"
 import { RandomJokesStateSlice } from "./types"
 import { createAppSlice } from "store/createAppSlice"
 import axios from "axios"
-import { stat } from "fs"
 
 const randomJokesInitialState: RandomJokesStateSlice = {
   data: [],
